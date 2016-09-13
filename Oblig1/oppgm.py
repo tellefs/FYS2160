@@ -14,10 +14,7 @@ for i in range(N):
 		else:
 			macrostates[i,j] = 1.
 
-thesum = sum(macrostates)
+thesum = sum(macrostates)																																					
 
 mplt.hist(thesum, 20)
 mplt.show()
-
-
-

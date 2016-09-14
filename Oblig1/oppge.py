@@ -15,9 +15,6 @@ def microstates(qa, Na, Nb):
 	return omega_a*omega_b
 
 
-for i in [0,1,2,3,4,5,6]:
-	print "# of different microstates for q_a = %i is %i" %(i, microstates(qa=5,Na=2,Nb=2))
-print "Total number of microstates is 48"
 
 def P(qa, q, Na, Nb):
 	"""
@@ -27,13 +24,15 @@ def P(qa, q, Na, Nb):
 	N = Na + Nb
 	omega_a = float(mt.factorial(qa+Na-1)/(mt.factorial(qa)*mt.factorial(Na-1)))
 	omega_b = float(mt.factorial(qb+Na-1)/(mt.factorial(qb)*mt.factorial(Nb-1)))
-	omega_tot = float(mt.factorial(q+N-1)/(mt.factorial(q)*mt.factorial(N-1)))	
-	return (omega_a*omega_b)/omega_tot
+	omega_tot = float(mt.factorial(q+N-1)/(mt.factorial(q)*mt.factorial(N-1)))
+	print "# of microstates for qa = %i is %i" %(qa, omega_a*omega_b)
+	return (omega_a*omega_b)/omega_tot, omega_tot
 
 qa = np.linspace(0, 6, 7)
 P_qa = np.zeros(7)
 for i in range(7):
-	P_qa[i] = P(qa[i], q=6, Na=2, Nb=2)
+	P_qa[i] = P(qa[i], q=6, Na=2, Nb=2)[0]
+print 'total # of microstates is %i' %P(qa[i], q=6, Na=2, Nb=2)[1]
 
 plt.plot(qa, P_qa)
 plt.xlabel("q_a")

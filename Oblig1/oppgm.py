@@ -14,7 +14,9 @@ for i in range(N):
 		else:
 			macrostates[i,j] = 1.
 
-thesum = sum(macrostates)																																					
+thesum = sum(macrostates)
 
-mplt.hist(thesum, 20)
+mplt.hist(thesum, 30)
+mplt.xlabel(' ')
+mplt.ylabel('Energy (assuming mu*B=1)')
 mplt.show()

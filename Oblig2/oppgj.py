@@ -2,8 +2,8 @@ import numpy as np
 import matplotlib.pyplot as mplt
 
 
-
-def Z(T_over_theta_r, epsilon=1e-3):
+# -- Problem (j) --
+def Z(T_over_theta_r, epsilon=1e-14):
 	"""
 	Z(T) = sum_i (from 0 to infinity): exp(-i(i+1)/T_over_theta_r)
 	function to calculate a reasonable approximation to the partition function Z(T,V,N)
@@ -15,20 +15,19 @@ def Z(T_over_theta_r, epsilon=1e-3):
 	for j in range(len(T_over_theta_r)):
 		element = 1. 
 		i = 1
-		while np.exp(-i*(i+1)/T_over_theta_r[j]) > epsilon:
-			element += np.exp(-i*(i+1)/T_over_theta_r[j])
+		while (2*i + 1)*np.exp(-i*(i+1)/T_over_theta_r[j]) > epsilon:
+			element += (2*i + 1)*np.exp(-i*(i+1)/T_over_theta_r[j])
 			i += 1
 		z[j] = element
 	return z
 
-
-
-
-
-T_over_theta_r = np.linspace(1e-6, 1e6, 100)
-
-mplt.plot(T_over_theta_r, Z(T_over_theta_r))
-mplt.xlabel('T_over_theta_r')
+# -- Problem (k) --
+T_over_theta_r = np.linspace(1e-6, 5, 100)
+mplt.plot(T_over_theta_r, Z(T_over_theta_r), label='Z(T)')
+mplt.plot(T_over_theta_r, 1+np.exp(-2/T_over_theta_r), 'r', label='approximation of Z(T) for high T') # -- Problem (l) --
+mplt.axis([0,4,0,5])
+mplt.legend()
+mplt.xlabel('$T/\Theta_R$')
 mplt.ylabel('Z(t)')
 mplt.show()		
 

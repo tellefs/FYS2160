@@ -10,5 +10,6 @@ def heat_capacity(T):
 	return (3*epsilon**2*np.exp(epsilon*beta))/(k*T**2*(np.exp(epsilon*beta)+3)**2)
 
 mplt.plot(T, heat_capacity(T))
+mplt.xlabel('T')
+mplt.ylabel('$C_V$')
 mplt.show()
-

@@ -24,10 +24,10 @@ p_hat_intersection
 figure
 plot(rho_hat, p_hat);
 hold 'on'
-%plot([0.426,1.66], [p_hat_intersection, p_hat_intersection], 'r')
+plot([0.426,1.66], [p_hat_intersection, p_hat_intersection], 'r')
 xlabel('$$\hat{\rho}$$','Interpreter','Latex')
 ylabel('$$\hat{p}$$', 'Interpreter', 'Latex')
-%print('oppg_m.png', '-dpng')
+print('oppg_m1.png', '-dpng')
 
 
 figure
@@ -38,4 +38,4 @@ xlabel('$$\hat{V}$$','Interpreter','Latex')
 ylabel('$$\hat{p}$$', 'Interpreter', 'Latex')
 legend('T = 0.9')
 %print('oppg_m2.png', '-dpng')
-print('oppgo_9.png', '-dpng')
+%print('oppgo_9.png', '-dpng')
